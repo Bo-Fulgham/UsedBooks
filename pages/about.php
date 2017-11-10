@@ -5,7 +5,6 @@
 		<title>About</title>
 	</head>
 	<body>
-		<?php require '../functions/header.php';?>
 		<h2>this is the about page</h2>
 		<?php require '../functions/pagesbar.php';?>
 
