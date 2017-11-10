@@ -15,11 +15,11 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="First-slide" src="https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="First slide">
+            <img class="First-slide" height="400px" width = "100%" src="https://images.unsplash.com/photo-1463320726281-696a485928c7?auto=format&fit=crop&w=1500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="First slide">
             <div class="container">
               <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+								<h2 id="why">Why choose us?</h2>
+								<p>Better prices, better service, and faster delivery!</p>
                 <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
               </div>
             </div>
@@ -33,12 +33,15 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+		</div>
+
 		<div class="jumbotron">
 			<div class="container">
 				<h2 id="specials" align="center">Current Deals</h2>
 				<br>
 				<br>
-				</div
+			</div>
+			<hr>
 				<div class="row">
           <div class="col-lg-4">
             <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
@@ -61,8 +64,7 @@
         </div>
 
 
-				<h2 id="why">Why choose us?</h2>
-				<p>Better prices, better service, and faster delivery!</p>
+
 		</div>
 	</div>
 

@@ -1,4 +1,9 @@
 <?php echo '
+<style>
+.navbar {
+	margin-bottom: 0px;
+}
+</style>
 <nav class="navbar navbar-inverse bg-inverse navbar-static-top">
 <div class="container">
 	<div class="navbar-header">
