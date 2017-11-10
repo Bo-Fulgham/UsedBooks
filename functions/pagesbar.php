@@ -9,11 +9,13 @@ echo "
 			echo "<p><a href='logout.php'>Logout</a> </p>";
 		}
 		else {
-			echo "<p><a href='login_page.php'>Login</a></p>";
+			echo "<p><a href='login_page.php'>Login</a></p>
+				<p><a href='registration_page.php'>Register</a></p>";
 		}
 	}
 	else {
-		echo "<p><a href='login_page.php'>Login</a></p>";
+		echo "<p><a href='login_page.php'>Login</a></p>
+		<p><a href='registration_page.php'>Register</a></p>";
 	}
 echo "
 	<p> <a href='account.php'>Account</a></p>

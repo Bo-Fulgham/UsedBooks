@@ -16,16 +16,18 @@
 
 		<?php
             // is an Admin logged in?
-            if($_SESSION['logged_in'] == true){
-                if ($_SESSION['isAdmin'] == 1) {
-                    echo "You are logged in as an admin";
-                }
-                else 
-                	echo "You are logged in as a user";
-            }
-            else {
-                echo "You are not logged in";
-            }         
+			if(isset($_SESSION['logged_in'])){
+	            if($_SESSION['logged_in'] == true){
+	                if ($_SESSION['isAdmin'] == 1) {
+	                    echo "You are logged in as an admin";
+	                }
+	                else 
+	                	echo "You are logged in as a user";
+	            }
+	            else {
+	                echo "You are not logged in";
+	            }      
+            }   
 
         ?>
 
