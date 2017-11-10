@@ -1,7 +1,6 @@
 <?php 
     require_once 'login.php'; // file that contains database credentials 
     $connection = new mysqli($hn, $un, $pw, $db);
-
     // place useful functions here
     // Is someone already logged in? If so, forward them to the correct page
     function isLoggedIn() {
@@ -21,7 +20,6 @@
             $_SESSION['logged_in'] = false;
         }
     }
-
     // Were a username and password provided? If so check them against
     // the database.                  
     //      If username / password were valid, set session variables
@@ -33,7 +31,6 @@
         $email = $_POST['email']; 
         $password = $_POST['password']; 
         //echo "$name, $password <br>";
-
         $query = "SELECT email FROM users WHERE email = '$email'";
         $result = $connection->query($query);
         $rows = $result->num_rows;
