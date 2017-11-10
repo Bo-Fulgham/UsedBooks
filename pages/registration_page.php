@@ -1,21 +1,15 @@
 <?php //setupusers.php (with changes)
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
-  
-<<<<<<< HEAD
-  require_once 'login.php';
-=======
+
+
   require_once '../functions/login.php';
->>>>>>> Bo
   $connection = new mysqli($hn, $un, $pw, $db);
   if ($connection->connect_error) die($connection->connect_error);
   $emailErr = $passErr = $addrErr = "";
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
-<<<<<<< HEAD
 
-=======
->>>>>>> Bo
     if(empty($_POST["email"]))
     {
       $emailErr = "Invalid email";
@@ -24,10 +18,7 @@
     {
      $emailErr = "Invalid email"; 
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> Bo
     if(empty($_POST["password"]))
     {
       $passErr = "Invalid Password";
@@ -35,10 +26,6 @@
     elseif (strlen($_POST["password"]) <= 6) {
       $passErr = "Invalid Password";
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> Bo
     if(empty($_POST["address"]))
     {
       $addrErr = "Invalid address";
@@ -78,27 +65,17 @@
   <input type="submit" value="Create Account">
   </form>
 _END;
-<<<<<<< HEAD
 
-=======
->>>>>>> Bo
   //$connection->close();
   
   function add_user($connection, $email, $password, $address, $major)
   {
-<<<<<<< HEAD
 
-=======
->>>>>>> Bo
     $query  = "INSERT INTO users (email, password, address, major) "
             . "VALUES('$email', '$password', 'address', '$major')";
     $result = $connection->query($query);
     if (!$result) die($connection->error);
   }
   $connection->close();
-<<<<<<< HEAD
+?>
 
-?>
-=======
-?>
->>>>>>> Bo
