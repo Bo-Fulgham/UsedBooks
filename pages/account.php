@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset ="utf-8" />
-		<title>About</title>
+		<title>Account</title>
 	</head>
 	<body>
 		<p>This is the account page</p>
@@ -15,7 +15,7 @@
 		}
 		    // is an Admin logged in?
             if($_SESSION['isAdmin'] == 1){
-                echo "admin stuff";
+				echo "<h3><a href='adminControls.php'>Admin Controls</a> </h3>";
             }
         ?>
 
