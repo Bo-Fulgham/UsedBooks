@@ -96,8 +96,8 @@
   function add_book($connection, $bookID, $title, $ISBN, $author, $publisher, $price, $edition, $category)
   {
 
-    $query  = "INSERT INTO inventory (bookID, title, ISBN, author, publisher, price, edition, category) "
-            . "VALUES('$bookID', '$title', '$ISBN', '$author', '$publisher', '$price', '$edition', '$category')";
+    $query  = "INSERT INTO inventory (bookID, title, ISBN, author, publisher, price, edition, category, isFlagged, quantity) "
+            . "VALUES('$bookID', '$title', '$ISBN', '$author', '$publisher', '$price', '$edition', '$category', 0, 0)";
     $result = $connection->query($query);
     if (!$result) die($connection->error);
   }
