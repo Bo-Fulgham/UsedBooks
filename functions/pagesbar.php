@@ -1,4 +1,6 @@
-<?php echo '
+<?php
+session_start();
+echo '
 <style>
 .navbar {
 	margin-bottom: 0px;
@@ -16,25 +18,38 @@
 	<div class="nav navbar-nav navbar-right">
 		<form class="navbar-form navbar-left">
 					<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
+							<form method="get" action="search.php">
+							<input name="search_terms" type="text" class="form-control" size="25" maxlength="30" placeholder="Search">
+							<input type="submit" value="Submit">
+							</form>
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
+
 				</form>
-				<li><a href="#">Cart (0)</a></li>
+				<li><a href="cart.php">Cart (0)</a></li>
 		<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-						<li><a href="#">Your Account</a></li>
-						<li><a href="#">Your Orders</a></li>
+						<li><a href="account.php">Your Account</a></li>
 						<li role="separator" class="divider"></li>
-						<li><a href="login_page.php">Login</a></li>
-						<li><a href="#">Logout</a></li>
+						';
+						if (isset($_SESSION['logged_in'])){
+								if ($_SESSION['logged_in'] == true){
+									echo "<li><a href='logout.php'>Logout</a></li>";
+								}
+								else {
+									echo "<li><a href='login_page.php'>Login</a></li>";
+								}
+							}
+							else {
+								echo "<li><a href='login_page.php'>Login</a></li>";
+							}
+echo '
 						<li role="separator" class="divider"></li>
 						<li><a href="registration_page.php">Create Account</a></li>
 					</ul>
 			</li>
 	</div>
 </div>
-</nav>
-	';
+</nav>';
+
 ?>

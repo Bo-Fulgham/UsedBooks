@@ -20,7 +20,7 @@
               <div class="carousel-caption">
 								<h2 id="why">Why choose us?</h2>
 								<p>Better prices, better service, and faster delivery!</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                <p><a class="btn btn-lg btn-primary" href="about.php" role="button">Learn more</a></p>
               </div>
             </div>
           </div>

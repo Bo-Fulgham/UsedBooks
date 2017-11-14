@@ -17,12 +17,9 @@
 		<h3>What was wrong with Chegg?</h3>
 		<p>asdfl;kjqweprojaslkdfkjjasd;lfkzxcv,.m</p>
 
-
-
+		<?php include '../functions/footer.php';?>
 		<script type="text/javascript" src="extfiles/jquery-2.1.4.js "></script>
 		<script type="text/javascript" src="extfiles/bootstrap.min.js"></script>
 	</body>
-	<footer>
-		<?php include '../functions/footer.php';?>
-	</footer>
+
 </html>
