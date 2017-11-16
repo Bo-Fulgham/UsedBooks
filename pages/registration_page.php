@@ -2,6 +2,41 @@
   error_reporting(E_ALL);
   ini_set('display_errors', 1);
 
+  require '../functions/pagesbar.php';
+  require '../functions/header.php';
+
+  echo <<< _END
+   <link rel="stylesheet" type="text/css" href="extfiles/bootstrap.css">;
+   <style style="text/css">
+   .container1 {
+
+     width: 500px;
+     clear: both;
+     border-radius: 25px;
+     background: #F9690E;
+     border: 2px solid #F9690E;
+     padding: 20px;
+     width: inherit;
+     height: inherit;
+
+   }
+  .container1 input {
+
+      width: 100%;
+      clear: both;
+
+   }
+   .center {
+     margin: auto;
+     margin-top: 10px;
+     width: 50%;
+
+   }
+   .center h1{
+     text-align: center;
+   }
+  </style>
+_END;
 
   require_once '../functions/login.php';
   $connection = new mysqli($hn, $un, $pw, $db);
@@ -32,39 +67,36 @@
     }
     if($addrErr == "" and $passErr == "" and $emailErr == ""){
     add_user($connection, $_POST["email"], $_POST["password"], $_POST["address"], $_POST["major"]);
-    echo "<p> Account created </p>";
+    echo "<h3><p> Account created </p></h3>";
   }
 
   }
   echo <<< _END
-  <h1> Create Account Page </h1>
-  <p> <a href='home.php'>Home</a> </p>
-  <p> <a href='about.php'>About</a> </p>
-  <p> <a href='contact.php'>Contact Us</a> </p>
-  <p> <a href='login_page.php'>Login</a> </p>
-  <form method='get' action='search.php'>
-  <p>Search: <input name='search_terms' type='text' size='25' maxlength='30'> </p>
-    <p>
-      <!-- input types 'submit' and 'reset' insert  -->
-        <!-- buttons for submitting and clearing the  -->
-        <!-- form's contents                          -->
-        <input type='submit' value='Search'>
-        </form>
-    </p>
-  <p> <a href='cart.php'>Cart</a> </p>
-  <form action="registration_page.php" method="POST">
-  Email: <span class="error"> $emailErr</span> <br>
-  <input type="text" name="email"><br>
 
-  Password: <span class = "error"> $passErr</span><br>
-  <input type="text" name ="password"><br>
-  Address: <span class ="error"> $addrErr </span><br>
-  <input type="text" name="address"><br>
-  Major:<br>
-  <input type="text" name="major"><br><br>
-  <input type="submit" value="Create Account">
-  </form>
+  <div class = "container1 center">
+    <h1> Create an Account</h1>
+    <form action="registration_page.php" method="POST">
+    Email: <span class="error"> $emailErr</span> <br>
+    <input type="text" name="email"><br>
+
+    Password: <span class = "error"> $passErr</span><br>
+    <input type="text" name ="password"><br>
+    Address: <span class ="error"> $addrErr </span><br>
+    <input type="text" name="address"><br>
+    Major:<br>
+    <input type="text" name="major"><br><br>
+    <input type="submit" value="Create Account">
+    </form>
+  </div>
+
+
 _END;
+
+  include '../functions/footer.php';
+
+  echo '<script type="text/javascript" src="extfiles/jquery-2.1.4.js "></script>
+  <script type="text/javascript" src="extfiles/bootstrap.min.js"></script>';
+
 
   //$connection->close();
 
