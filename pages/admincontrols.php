@@ -4,7 +4,7 @@
 		<meta charset ="utf-8" />
 		<title>Admin Controls</title>
     <link rel="stylesheet" type="text/css" href="extfiles/bootstrap.css">
-    
+
 	</head>
 	<body>
 		<h1>Admin controls page</h1>
@@ -33,7 +33,6 @@
 		<input type="submit" value="Add book">
 		</form>
 		<?php include '../functions/footer.php';?>
-    <?php include '../functions/footer.php';?>
 		<script type="text/javascript" src="extfiles/jquery-2.1.4.js "></script>
 		<script type="text/javascript" src="extfiles/bootstrap.min.js"></script>
 	</body>

@@ -5,6 +5,10 @@ echo '
 .navbar {
 	margin-bottom: 0px;
 }
+.navbar-inverse{
+	background-color: #232B35;
+	border-color: #232B35;
+}
 </style>
 <nav class="navbar navbar-inverse bg-inverse navbar-static-top">
 <div class="container">
@@ -14,13 +18,14 @@ echo '
 	<ul class="nav navbar-nav">
 		<li><a href="about.php" >About</a></li>
 		<li><a href="contact.php" >Contact</a></li>
+		<li><a href="textbooks.php">Textbooks</a></li>
 	</ul>
 	<div class="nav navbar-nav navbar-right">
 		<form class="navbar-form navbar-left">
 					<div class="form-group">
 							<form method="get" action="search.php">
-							<input name="search_terms" type="text" class="form-control" size="25" maxlength="30" placeholder="Search">
-							<input type="submit" value="Submit">
+							<input name="search_terms" type="text" class="form-control" size="30" maxlength="30" placeholder="Enter ISBN, Author name, or Title">
+								<input class="btn btn-md btn-primary" style="background-color:#F9690E;" type="submit" value="submit">Search</a></p>
 							</form>
 					</div>
 
