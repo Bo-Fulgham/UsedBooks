@@ -44,7 +44,7 @@ echo "
                 if ($conn->connect_error) 
                     die($conn->connect_error);
                 $terms = $_GET['search_terms'];
-
+                if(!empty($_GET['search_terms'])){
                 //Search 
                 $query  = "SELECT * FROM inventory WHERE title LIKE '%$terms%'";
                 $result = $conn->query($query);
@@ -96,7 +96,7 @@ echo "
                     echo 'category:' .$row['Category']. '<br>';
                     echo 'Quantity:'  .$row['quantity']. '<br><br><br>';
                  
-                    }
+                    }   
                     //Search ISBN
             $query  = "SELECT * FROM inventory WHERE ISBN LIKE '%$terms%'";
                 $result = $conn->query($query);
@@ -122,9 +122,10 @@ echo "
                     echo 'Quantity:'  .$row['quantity']. '<br><br><br>';
                  
                     }
-  $result->close();
-  $conn->close();
-         
+                
+            $result->close();
+            $conn->close();
+         }
 
         ?>
 
