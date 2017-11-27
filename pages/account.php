@@ -7,7 +7,7 @@
 	<body>
 		<p>This is the account page</p>
 		<?php require '../functions/pagesbar.php';?>
-		<p>Delete Account</p>
+		<p><button onclick="window.location.href='delete_page.php'">Delete Account</button></p>
 
 		<?php 
 			if ($_SESSION['logged_in'] == false){
@@ -15,7 +15,8 @@
 		}
 		    // is an Admin logged in?
             if($_SESSION['isAdmin'] == 1){
-				echo "<h3><a href='adminControls.php'>Admin Controls</a> </h3>";
+				echo "<h3><a href='adminAddBook.php'>Add Books</a> </h3>";
+				echo "<h3><a href='adminRemoveBook.php'>Remove Books</a> </h3>";
             }
         ?>
 
