@@ -41,7 +41,15 @@
             $salt2    = "pg!@";
             $passwordH = hash('ripemd128', "$salt1$password$salt2");
             $query = "SELECT password FROM users WHERE password = '$passwordH' AND username = '$name'";*/
-            $query = "SELECT password FROM users WHERE password = '$password' AND email = '$email'";
+            /*
+            $salt1    = "qm&h*";
+            $salt2    = "pg!@";
+            $token    = hash('ripemd128', "$salt1$password$salt2");*/
+            $salt1    = "qm&h*";
+            $salt2    = "pg!@";
+            $passwordH = hash('ripemd128', "$salt1$password$salt2");
+            //echo $passwordH;
+            $query = "SELECT password FROM users WHERE password = '$passwordH' AND email = '$email'";
             $result = $connection->query($query);
             $rows = $result->num_rows;
                 if($rows > 0)
@@ -49,6 +57,7 @@
                   echo 'password correct<br>';
                   $_SESSION['logged_in'] = true; 
                   echo 'The email and password are correct.';
+                  $_SESSION['email'] = $email;
                   if ($email == 'admin@notChegg.com'){
                     $_SESSION['isAdmin'] = 1;
                     echo '<p>You are an admin<p>';
@@ -64,8 +73,11 @@
                 {
                     echo 'The email or password are incorrect!';
                     $_POST['email'] = $email;
-                    $_POST['email'] = $password;
+                    $_POST['password'] = $password;
                 }
+            }
+            else {
+                echo "Account does not exist";
             }
         }
     }

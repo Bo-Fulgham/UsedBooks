@@ -19,7 +19,10 @@
             $salt2    = "pg!@";
             $passwordH = hash('ripemd128', "$salt1$password$salt2");
             $query = "SELECT password FROM users WHERE password = '$passwordH' AND username = '$name'";*/
-            $query = "SELECT password FROM users WHERE password = '$password' AND email = '$email'";
+            $salt1    = "qm&h*";
+            $salt2    = "pg!@";
+            $passwordH = hash('ripemd128', "$salt1$password$salt2");
+            $query = "SELECT password FROM users WHERE password = '$passwordH' AND email = '$email'";
             $result = $connection->query($query);
             $rows = $result->num_rows;
                 if($rows > 0)
@@ -42,7 +45,7 @@
                 {
                     echo 'The email or password are incorrect!';
                     $_POST['email'] = $email;
-                    $_POST['email'] = $password;
+                    $_POST['password'] = $password;
                 }
             }
         }

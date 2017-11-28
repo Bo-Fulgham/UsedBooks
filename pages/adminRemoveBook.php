@@ -17,6 +17,10 @@
 		?>
 		<h2>Remove Book</h2>
 		<form action="adminRemoveBook.php" method="POST">
+			Book ID: <!--<span class="error"> $titleErr</span>--> <br>
+			<input type="text" name="bookID" value="<?php echo isset($_POST['bookID']) ? $_POST['bookID'] : '' ?>"><br>
+		</form>
+		<form action="adminRemoveBook.php" method="POST">
 			<table>
 				<?php include '../functions/removeBook.php';?>				
 			</table>

@@ -7,6 +7,9 @@
   $connection = new mysqli($hn, $un, $pw, $db);
   if ($connection->connect_error) die($connection->connect_error);
   $emailErr = $passErr = $addrErr = "";
+  $salt1    = "qm&h*";
+  $salt2    = "pg!@";
+
   if($_SERVER["REQUEST_METHOD"] == "POST")
   {
 
@@ -31,7 +34,9 @@
       $addrErr = "Invalid address";
     }
     if($addrErr == "" and $passErr == "" and $emailErr == ""){
-    add_user($connection, $_POST["email"], $_POST["password"], $_POST["address"], $_POST["major"]);
+    $password = $_POST["password"];
+    $token    = hash('ripemd128', "$salt1$password$salt2");
+    add_user($connection, $_POST["email"], $token, $_POST["address"], $_POST["major"]);
     echo "<p> Account created </p>";
   }
     
@@ -68,11 +73,10 @@ _END;
 
   //$connection->close();
   
-  function add_user($connection, $email, $password, $address, $major)
+  function add_user($connection, $email, $token, $address, $major)
   {
-
     $query  = "INSERT INTO users (email, password, address, major) "
-            . "VALUES('$email', '$password', 'address', '$major')";
+            . "VALUES('$email', '$token', 'address', '$major')";
     $result = $connection->query($query);
     if (!$result) die($connection->error);
   }

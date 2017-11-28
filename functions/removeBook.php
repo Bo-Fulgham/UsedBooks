@@ -11,9 +11,24 @@
   if (!$result) 
     die($connection->error);
   $rows = $result->num_rows;
+  $bookIDErr = "";
+  if($_SERVER["REQUEST_METHOD"] == "POST")
+  {
+    if(empty($_POST["bookID"]))
+    {
+      $bookIDErr = "Enter a bookID";
+    }
+    //ISBN must be 13 digit INT
+    elseif (!filter_var($_POST["bookID"], FILTER_VALIDATE_INT)) 
+    {
+     $bookIDErr = "Book ID must be an integer"; 
+    }
+    echo "Enter twice to delete";
+    delete_book($_POST["bookID"]);
+  }
   echo '<br>';
   //Table header
-  echo '<tr><td><b>Title</b></td><td><b>Author</b></td><td><b>Category</b></td><td><b>ISBN</b></td><td><b>Price</b></td></tr>'; 
+  echo '<tr><td><b>Title</b></td><td><b>Author</b></td><td><b>Category</b></td><td><b>ISBN</b></td><td><b>Price</b></td><td><b>ID</b></td></tr>'; 
   //echo '<th><td>Author</td> Title Category Year ISBN</th>';
   $deleteID = 0;
   for ($j = 0 ; $j < $rows ; ++$j)
@@ -26,15 +41,15 @@
     echo '<td>' . $row['ISBN'] . '</td>';
     echo '<td>' . $row['Price'] . '</td>';
     echo '<td>' . $row['bookID'] . '</td>';
-    $deleteID = $row['bookID'];
-    echo $deleteID;
-    echo '<td> <button onclick="delete_book($deleteID)">Delete</button> <td></tr><br>';
+    //$deleteID = $row['bookID'];
+    //echo $deleteID;
+    //echo '<td> <button onclick="delete_book($deleteID)">Delete</button> <td></tr><br>';
     //echo '<td><input type="submit" name="delete" value="'.$row['bookID'].'" /></td>"';
     //$query = "DELETE FROM inventory WHERE bookID = '$bookID'";
     //$result = $connection->query($query);
   }
   //echo "hello";
-  echo $deleteID;
+  //echo $deleteID;
   //$deleteID = 5;
  // delete_book($deleteID);
   //$query = "DELETE FROM inventory WHERE bookID = '$deleteID'";
@@ -60,7 +75,7 @@
     if (!$result) die($connection->error);
   }*/
   function delete_book($bookID) {
-    echo 'hello';
+   // echo 'hello';
     global $connection;
     $query = "DELETE FROM inventory WHERE bookID = '$bookID'";
     $result = $connection->query($query);
