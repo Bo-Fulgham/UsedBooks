@@ -44,10 +44,13 @@ echo "
                 $conn = new mysqli($hn, $un, $pw, $db);
                 if ($conn->connect_error) 
                     die($conn->connect_error);
+                if(isset($_GET['search_terms'])){
                 $terms = $_GET['search_terms'];
+                $_SESSION['search_terms'] = $terms;}
+                else{
+                    $terms = $_SESSION['search_terms'];
+                }
 
-                //checks to make sure the search is not 
-                if(!empty($_GET['search_terms'])){
                 //Search 
                 $query  = "SELECT * FROM inventory WHERE title LIKE '%$terms%'";
                 $result = $conn->query($query);
@@ -70,8 +73,13 @@ echo "
                     echo 'Image?:' .$row['Image']. '<br>';
                     echo 'isFlagged:' .$row['isFlagged']. '<br>';
                     echo 'category:' .$row['Category']. '<br>';
-                    echo 'Quantity:'  .$row['quantity']. '<br><br><br>';
-                 
+                    echo 'Quantity:'  .$row['quantity']. '<br>';
+                    echo '<form action ="search.php" method="post">
+                    <button name ="add_to_cart" value = '.$row['bookID'].' type="submit">Add to cart</button>';
+                    echo '</form>';
+                    echo '<br><br><br>';
+
+                
                     }
 
 
@@ -97,9 +105,12 @@ echo "
                     echo 'Image?:' .$row['Image']. '<br>';
                     echo 'isFlagged:' .$row['isFlagged']. '<br>';
                     echo 'category:' .$row['Category']. '<br>';
-                    echo 'Quantity:'  .$row['quantity']. '<br><br><br>';
-                 
-                    }   
+                    echo 'Quantity:'  .$row['quantity']. '<br>';
+                    echo '<form action ="search.php" method="post">
+                    <button name ="add_to_cart" value = '.$row['bookID'].' type="submit">Add to cart</button>';
+                    echo '</form>';
+                    echo '<br><br><br>';
+                    }
                     //Search ISBN
             $query  = "SELECT * FROM inventory WHERE ISBN LIKE '%$terms%'";
                 $result = $conn->query($query);
@@ -122,13 +133,29 @@ echo "
                     echo 'Image?:' .$row['Image']. '<br>';
                     echo 'isFlagged:' .$row['isFlagged']. '<br>';
                     echo 'category:' .$row['Category']. '<br>';
-                    echo 'Quantity:'  .$row['quantity']. '<br><br><br>';
-                 
+                    echo 'Quantity:'  .$row['quantity']. '<br>';
+                    echo '<form action ="search.php" method="post">
+                    <button name ="add_to_cart" value = '.$row['bookID'].' type="submit">Add to cart</button>';
+                    echo '</form>';
+                    echo '<br><br><br>';
                     }
-                
-            $result->close();
-            $conn->close();
-         }
+
+            if(isset($_POST['add_to_cart'])){
+                $bookID = $_POST['add_to_cart'];
+                $email = $_SESSION['email'];
+                $query  = "INSERT INTO cart (BookID, UserID)
+                VALUES ('$bookID', '$email')";
+                $result = $conn->query($query);
+                if (!$result) 
+                    die($conn->error);
+                  
+                  
+            }
+            //$_SESSION['bookID'] = $bookID;
+    
+  //$result->close();
+  $conn->close();
+         
 
         ?>
 
