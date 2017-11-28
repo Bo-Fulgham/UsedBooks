@@ -7,6 +7,7 @@
 	<body>
 		<h2>this is the search page</h2>
 		<?php //require '../functions/pagesbar.php';
+        session_start();
             echo "
     <p> <a href='home.php'>NotChegg</a> </p>
     <p> <a href='about.php'>About</a> </p>
@@ -44,6 +45,8 @@ echo "
                 if ($conn->connect_error) 
                     die($conn->connect_error);
                 $terms = $_GET['search_terms'];
+
+                //checks to make sure the search is not 
                 if(!empty($_GET['search_terms'])){
                 //Search 
                 $query  = "SELECT * FROM inventory WHERE title LIKE '%$terms%'";

@@ -24,6 +24,8 @@
         </form>
 
 
-		<?php include '../functions/footer.php';?>
+		<?php 
+        $_SESSION['email'] = $_POST['username']; 
+        include '../functions/footer.php';?>
 	</body>
 </html>

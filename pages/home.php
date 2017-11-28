@@ -15,6 +15,9 @@
 		<h2 id="why">Why choose us?</h2>
 		<p>Better prices, better service, and faster delivery!</p>
 
-		<?php include '../functions/footer.php';?>
+		<?php
+		if(isset($_SESSION['email'])) {
+		echo $_SESSION['email'];}
+		 include '../functions/footer.php';?>
 	</body>
 </html>
