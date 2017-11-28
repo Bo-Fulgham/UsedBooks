@@ -1,5 +1,15 @@
 <?php 
 session_start();
+$random = rand(0, 1000000);
+
+$cookie_value = $random;
+if($_SESSION['logged_in'] != true){
+$cookie_name = "user";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+
+}
+echo $_COOKIE[$cookie_value];
+
 echo "
 	<p>	<a href='home.php'>NotChegg</a> </p>
 	<p>	<a href='about.php'>About</a> </p>

@@ -70,11 +70,23 @@ _END;
   
   function add_user($connection, $email, $password, $address, $major)
   {
-
+    
     $query  = "INSERT INTO users (email, password, address, major) "
             . "VALUES('$email', '$password', 'address', '$major')";
+
     $result = $connection->query($query);
     if (!$result) die($connection->error);
+    
+    
+
+  }
+   
+  function SanitizeString($var)
+  {
+    $var = strip_tags($var);
+    $var = htmlentities($var);
+    $var = stripslashes($var);
+    return $var;
   }
   $connection->close();
 ?>

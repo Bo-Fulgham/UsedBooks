@@ -22,7 +22,10 @@
 	                    echo "You are logged in as an admin";
 	                }
 	                else 
+	                {
 	                	echo "You are logged in as a user";
+
+	                }
 	            }
 	            else {
 	                echo "You are not logged in";

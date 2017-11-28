@@ -5,9 +5,10 @@
     </head>
     <?php
         session_start();
-        setcookie (session_id(), "", time() - 3600);
+        setcookie ("user", "", time() - 3600);
         session_destroy();
         session_write_close();
+
         // remove session and session cookie
         
     ?> 

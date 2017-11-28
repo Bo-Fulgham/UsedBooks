@@ -21,7 +21,7 @@
             <input type="password" name="password" value="<?php echo isset($_POST['password']) ? $_POST['password'] : '' ?>"> <br>
             <input type="submit" value="Log in">
         </form>
-
+       
 
 		<?php include '../functions/footer.php';?>
 	</body>

@@ -7,7 +7,7 @@
 	<body>
 		<p>This is the account page</p>
 		<?php require '../functions/pagesbar.php';?>
-		<p>Delete Account</p>
+		
 
 		<?php 
 			if ($_SESSION['logged_in'] == false){
@@ -17,8 +17,8 @@
             if($_SESSION['isAdmin'] == 1){
 				echo "<h3><a href='adminControls.php'>Admin Controls</a> </h3>";
             }
-        ?>
 
-        <?php include '../functions/footer.php';?>
+        ?>
+        <button onclick="window.location.href='delete_page.php'">Delete Account</button>  
 	</body>
 </html>
