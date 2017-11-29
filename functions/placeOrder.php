@@ -36,7 +36,23 @@
         $orderNum = $i + 1;
         }
     }
-    $cart = array(8, 9, 1, 8);
+    $sessemail = $_SESSION['email'];
+    $query = "SELECT bookID FROM cart WHERE userID = '$sessemail'";
+    $result = $connection->query($query);
+    if (!$result) 
+      die($connection->error);
+    $rows = $result->num_rows;
+    $cart = array_fill(0, $rows, NULL);
+    for ($i = 0; $i <= $rows; ++$i) {
+        $result->data_seek($i);
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $cart[$i] = $row['bookID'];
+        $query2 = "DELETE FROM cart WHERE bookID = '$cart[$i]'";
+        $result2 = $connection->query($query2);
+        if (!$result2) 
+          die($connection->error);
+    }
+
     echo "Order Number: " . $orderNum . "<br>";
     $trackingNum = rand(10000000000, 99999999999);
     echo "Tracking Number: " . $trackingNum . "<br>";
@@ -72,12 +88,6 @@
     place_order($connection, $orderNum, $trackingNum, $orderDate, $shipDate, $arrivalDate, $itemsOnOrder, $totalPrice, $cart, $email);
     echo "<p>Order Placed.  Order Number is " . $orderNum . ".</p>";
   }
-        /* //$result->close();
-    if($ISBNErr == "" and $titleErr == "" and $pubErr == "" and $priceErr == "" and $catErr == ""){
-      add_book($connection, $bookID, $_POST["title"], $_POST["ISBN"], $_POST["author"], $_POST["publisher"], $_POST["price"], $_POST["edition"], $_POST["category"]);
-      echo "<p> Book Added </p>";
-    }*/
-  
  
 
     $result->close();
@@ -97,11 +107,7 @@ function place_order($connection, $orderNum, $trackingNum, $orderDate, $shipDate
               . "VALUES('$orderNum', '$trackingNum', '$orderDate', '$shipDate', '$arrivalDate', '$itemsOnOrder', '$totalPrice', '$bookIDs', '$email')";
       $result = $connection->query($query);
       if (!$result) die($connection->error);
-      /*$query = "INSERT INTO orderContents (orderNum, itemNum, bookID, price)"
-              . "VALUES('orderNum', '$j+1', '$bookID', '$price')";*/
-      /*$query = "CREATE TABLE orderContents (
-                  )*/
-    //}
+
   }
     $connection->close();
 ?>

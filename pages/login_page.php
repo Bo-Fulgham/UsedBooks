@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset ="utf-8" />
-		<title>Login</title>
-	</head>
-	<body>
+    <head>
+        <meta charset ="utf-8" />
+        <title>Login</title>
+    </head>
+    <body>
         <h2>this is the login page</h2>
         <?php require '../functions/pagesbar.php';?>
 
@@ -23,6 +23,8 @@
         </form>
 
 
-		<?php include '../functions/footer.php';?>
-	</body>
+        <?php 
+        $_SESSION['email'] = $_POST['email']; 
+        include '../functions/footer.php';?>
+    </body>
 </html>

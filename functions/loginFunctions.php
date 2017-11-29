@@ -8,12 +8,6 @@
             $_SESSION['logged_in'] = false;
         }
         if($_SESSION['logged_in'] == true){
-            /*if ($_SESSION['type'] == 'user'){
-                header('Location: user_page.php');
-            }
-            if ($_SESSION['type'] == 'admin') {
-                header('Location: admin_page.php');
-            }*/
             header('Location: home.php');
         }
         else {
@@ -37,14 +31,6 @@
             if($rows > 0)
             {
             echo "email was correct<br>";
-            /*$salt1    = "qm&h*";
-            $salt2    = "pg!@";
-            $passwordH = hash('ripemd128', "$salt1$password$salt2");
-            $query = "SELECT password FROM users WHERE password = '$passwordH' AND username = '$name'";*/
-            /*
-            $salt1    = "qm&h*";
-            $salt2    = "pg!@";
-            $token    = hash('ripemd128', "$salt1$password$salt2");*/
             $salt1    = "qm&h*";
             $salt2    = "pg!@";
             $passwordH = hash('ripemd128', "$salt1$password$salt2");

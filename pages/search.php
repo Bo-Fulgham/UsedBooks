@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset ="utf-8" />
-		<title>Search</title>
-	</head>
-	<body>
-		<h2>this is the search page</h2>
-		<?php //require '../functions/pagesbar.php';
+    <head>
+        <meta charset ="utf-8" />
+        <title>Search</title>
+    </head>
+    <body>
+        <h2>this is the search page</h2>
+        <?php //require '../functions/pagesbar.php';
+        session_start();
             echo "
     <p> <a href='home.php'>NotChegg</a> </p>
     <p> <a href='about.php'>About</a> </p>
@@ -39,25 +40,25 @@ echo "
         
         
               require_once '../functions/login.php';
-
                 $conn = new mysqli($hn, $un, $pw, $db);
                 if ($conn->connect_error) 
                     die($conn->connect_error);
+                if(isset($_GET['search_terms'])){
                 $terms = $_GET['search_terms'];
-
+                $_SESSION['search_terms'] = $terms;}
+                else{
+                    $terms = $_SESSION['search_terms'];
+                }
                 //Search 
                 $query  = "SELECT * FROM inventory WHERE title LIKE '%$terms%'";
                 $result = $conn->query($query);
                 if (!$result) 
                      die($conn->error);
-
                  $rows = $result->num_rows;
-
                     for ($j = 0 ; $j < $rows ; ++$j)
                     {
                         $result->data_seek($j);
                         $row = $result->fetch_array(MYSQLI_ASSOC);
-
                     echo 'BookID: '   . $row['bookID']   . '<br>';
                     echo 'ISBN: '    . $row['ISBN']    . '<br>';
                     echo 'Title: ' . $row['Title'] . '<br>';
@@ -67,24 +68,23 @@ echo "
                     echo 'Image?:' .$row['Image']. '<br>';
                     echo 'isFlagged:' .$row['isFlagged']. '<br>';
                     echo 'category:' .$row['Category']. '<br>';
-                    echo 'Quantity:'  .$row['quantity']. '<br><br><br>';
-                 
+                    echo 'Quantity:'  .$row['quantity']. '<br>';
+                    echo '<form action ="search.php" method="post">
+                    <button name ="add_to_cart" value = '.$row['bookID'].' type="submit">Add to cart</button>';
+                    echo '</form>';
+                    echo '<br><br><br>';
+                
                     }
-
-
                     //Search AUthor
              $query  = "SELECT * FROM inventory WHERE Author LIKE '%$terms%'";
                 $result = $conn->query($query);
                 if (!$result) 
                      die($conn->error);
-
                  $rows = $result->num_rows;
-
                     for ($j = 0 ; $j < $rows ; ++$j)
                     {
                         $result->data_seek($j);
                         $row = $result->fetch_array(MYSQLI_ASSOC);
-
                     echo 'BookID: '   . $row['bookID']   . '<br>';
                     echo 'ISBN: '    . $row['ISBN']    . '<br>';
                     echo 'Title: ' . $row['Title'] . '<br>';
@@ -94,22 +94,22 @@ echo "
                     echo 'Image?:' .$row['Image']. '<br>';
                     echo 'isFlagged:' .$row['isFlagged']. '<br>';
                     echo 'category:' .$row['Category']. '<br>';
-                    echo 'Quantity:'  .$row['quantity']. '<br><br><br>';
-                 
+                    echo 'Quantity:'  .$row['quantity']. '<br>';
+                    echo '<form action ="search.php" method="post">
+                    <button name ="add_to_cart" value = '.$row['bookID'].' type="submit">Add to cart</button>';
+                    echo '</form>';
+                    echo '<br><br><br>';
                     }
                     //Search ISBN
             $query  = "SELECT * FROM inventory WHERE ISBN LIKE '%$terms%'";
                 $result = $conn->query($query);
                 if (!$result) 
                      die($conn->error);
-
                  $rows = $result->num_rows;
-
                     for ($j = 0 ; $j < $rows ; ++$j)
                     {
                         $result->data_seek($j);
                         $row = $result->fetch_array(MYSQLI_ASSOC);
-
                     echo 'BookID: '   . $row['bookID']   . '<br>';
                     echo 'ISBN: '    . $row['ISBN']    . '<br>';
                     echo 'Title: ' . $row['Title'] . '<br>';
@@ -119,15 +119,30 @@ echo "
                     echo 'Image?:' .$row['Image']. '<br>';
                     echo 'isFlagged:' .$row['isFlagged']. '<br>';
                     echo 'category:' .$row['Category']. '<br>';
-                    echo 'Quantity:'  .$row['quantity']. '<br><br><br>';
-                 
+                    echo 'Quantity:'  .$row['quantity']. '<br>';
+                    echo '<form action ="search.php" method="post">
+                    <button name ="add_to_cart" value = '.$row['bookID'].' type="submit">Add to cart</button>';
+                    echo '</form>';
+                    echo '<br><br><br>';
                     }
-  $result->close();
+            if(isset($_POST['add_to_cart'])){
+                $bookID = $_POST['add_to_cart'];
+                $email = $_SESSION['email'];
+                $query  = "INSERT INTO cart (BookID, UserID)
+                VALUES ('$bookID', '$email')";
+                $result = $conn->query($query);
+                if (!$result) 
+                    die($conn->error);
+                  
+                  
+            }
+            //$_SESSION['bookID'] = $bookID;
+    
+  //$result->close();
   $conn->close();
          
-
         ?>
 
-		<?php include '../functions/footer.php';?>
-	</body>
+        <?php include '../functions/footer.php';?>
+    </body>
 </html>

@@ -76,7 +76,7 @@ _END;
   function add_user($connection, $email, $token, $address, $major)
   {
     $query  = "INSERT INTO users (email, password, address, major) "
-            . "VALUES('$email', '$token', 'address', '$major')";
+            . "VALUES('$email', '$token', '$address', '$major')";
     $result = $connection->query($query);
     if (!$result) die($connection->error);
   }
