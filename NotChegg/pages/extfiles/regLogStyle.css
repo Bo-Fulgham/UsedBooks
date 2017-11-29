@@ -1,0 +1,38 @@
+.container1 {
+
+   width: 500px;
+   clear: both;
+   border-radius: 25px;
+   background: #F9690E;
+   border: 2px solid #F9690E;
+   padding: 20px;
+   width: inherit;
+   height: inherit;
+
+}
+.container1 input {
+
+    width: 100%;
+    clear: both;
+
+}
+.center {
+    margin: auto;
+    margin-top: 10px;
+    width: 50%;
+
+}
+.center h1{
+     text-align: center;
+ }
+.center p{
+    text-align: center;
+}
+.orange {
+    background-color: #F9690E;
+}
+
+.dark-blue{
+    background-color: #2C3E50;
+}
+
