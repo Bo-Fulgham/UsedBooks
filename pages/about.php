@@ -30,12 +30,19 @@
 		<!-- First Grid -->
         <div class="w3-row-padding w3-padding-64 w3-container">
           <div class="w3-content">
-							<h3>What was wrong with Chegg?</h3>
-              <h5 class="w3-padding-32">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h5>
+							<h2 style="text-align:center;">Who are we?</h2>
+              <h5 class="w3-padding-32">We are a group of 4 college students who want to see a good site for cheap used text books.
+							We aim to have the best prices and the best selection on the web. </h5>
+							<br />
+							<hr />
+							<br />
+							<h2 style="text-align:center;" class="w3-text-grey">Why NotChegg.com ?</h2>
+							<p class="w3-text-grey" style="text-align:left;">While we love Chegg we think NotChegg.com brings everything you love about chegg with one benifit.
+								 A great selection at an unbeatable price that any college students can afford.   </p>
 
-              <p class="w3-text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat.</p>
+							
+
+
             </div>
 
 
